@@ -1,0 +1,11 @@
+$ node jsBasics/task1.js
+Рядок: Привіт, JavaScript!
+Число: 12
+Булеве значення: true
+Null: null
+Undefined: undefined
+
+$ node jsBasics/task2.js
+Вік: 18
+Повнолітня особа: true
+

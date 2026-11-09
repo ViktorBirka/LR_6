@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторна робота №7 — вивід console.log</title>
+  <style>
+    body { margin: 40px; color: #111; background: #fff; font: 20px Arial, sans-serif; }
+    h1 { font-size: 28px; }
+    h2 { margin-top: 32px; font-size: 21px; }
+    pre { white-space: pre-wrap; font: 20px/1.7 monospace; }
+    p { color: #444; }
+  </style>
+</head>
+<body>
+  <h1>Лабораторна робота №7</h1>
+  <p>Вивід console.log під час виконання файлів у браузері</p>
+
+  <h2>jsBasics/task1.js</h2>
+  <pre id="task1"></pre>
+
+  <h2>jsBasics/task2.js</h2>
+  <pre id="task2"></pre>
+
+  <script>
+    const originalLog = console.log.bind(console);
+    let outputElement = document.getElementById("task1");
+    console.log = (...values) => {
+      originalLog(...values);
+      outputElement.textContent += values.map(String).join(" ") + "\n";
+    };
+    window.addEventListener("error", (event) => {
+      outputElement.textContent += "Помилка: " + event.message + "\n";
+    });
+  </script>
+  <script src="task1.js"></script>
+  <script>outputElement = document.getElementById("task2");</script>
+  <script src="task2.js"></script>
+  <script>console.log = originalLog;</script>
+</body>
+</html>
